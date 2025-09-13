@@ -1,0 +1,28 @@
+services:
+  cab_rental_db:
+    image: postgres:15
+    container_name: cab_rental_db
+    restart: always
+    environment:
+      POSTGRES_USER: cab_user
+      POSTGRES_PASSWORD: cab_pass
+      POSTGRES_DB: cab_rental
+    ports:
+      - "5433:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  cab_rental_pgadmin:
+    image: dpage/pgadmin4
+    container_name: cab_rental_pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - cab_rental_db
+
+volumes:
+  db_data:
