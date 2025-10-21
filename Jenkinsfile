@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Vijay410/cab-rental-system.git'
+                git branch: 'main', url: 'https://github.com/Vijay410/cab-rental-system.git'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building the project...'
+                echo 'Building...'
             }
         }
 
@@ -22,7 +22,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Deploying the application..'
+                echo 'Deploying...'
             }
         }
     }
